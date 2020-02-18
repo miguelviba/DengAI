@@ -52,12 +52,4 @@ You can learn more here:
 
 ## Problem description
 
-Su objetivo es predecir el valor de la columna **_total_cases_** para cada (ciudad, año, semana del año) en el 
-conjunto de prueba. Hay dos ciudades, San Juan e Iquitos, con datos de prueba para cada ciudad que 
-abarcan 5 y 3 años respectivamente. 
-Realizará una entrega que contenga predicciones para ambas ciudades. 
-Los datos para cada ciudad se han concatenadodentro de una columna de ciudad que indica la fuente (sj para 
-San Juan e iq para Iquitos). 
-El conjunto de prueba es un futuro puro, lo que significa que los datos de la prueba son secuenciales y no 
-se superponen con ninguno de los datos de entrenamiento. En todo momento, los valores faltantes se han 
-rellenado como NaN.
+Your goal is to predict the *total_cases* label for each (**city, year, weekofyear**) in the test set. There are two cities, San Juan and Iquitos, with test data for each city spanning 5 and 3 years respectively. You will make one submission that contains predictions for both cities. The data for each city have been concatenated along with a **city** column indicating the source: **sj** for San Juan and **iq** for Iquitos. The test set is a pure future hold-out, meaning the test data are sequential and non-overlapping with any of the training data. Throughout, missing values have been filled as **NaNs**.
