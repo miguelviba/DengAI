@@ -1,7 +1,9 @@
 # **DrivenData_DengueFever**
 
 Competition Hosted by DrivenData
+
 LINK: https://www.drivendata.org/competitions/44/dengai-predicting-disease-spread/page/82/
+
 Competition end date: June 28, 2020, 7:38 p.m.
 
 ## Can you predict local epidemics of dengue fever?
