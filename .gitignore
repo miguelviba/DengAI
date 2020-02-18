@@ -2,7 +2,7 @@
 *.mov
 .Rproj.user
 .idea
-\Other
+Other/
 datacamp-python-data-science-track-master.zip
 wblakecannon_DataCamp-master.zip
 repository-open-graph-template.png
