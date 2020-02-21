@@ -2,6 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from pandas.plotting import register_matplotlib_converters
+import seaborn as sns
+from sklearn.preprocessing import MinMaxScaler
+import DenGAI_Func
 import numpy as np
 import seaborn as sns
 
@@ -40,6 +43,7 @@ test_data = test_data.drop(kelvin_features, axis=1)
 
 # Make seperate dataset for each city
 
+# train_sj, train_iq = sep_df_bycity(train_data)
 train_sj = train_data.loc[train_data['city']=='sj']
 train_iq = train_data.loc[train_data['city']=='iq']
 
@@ -50,6 +54,25 @@ labels_sj = labels.loc[labels['city']=='sj']
 labels_iq = labels.loc[labels['city']=='iq']
 
 # EDA Step 1: How is data like
+# Global Plot: Sj
+plt.figure(figsize = (20, 5))
+(train_sj
+     .ndvi_ne
+     .plot
+     .line(lw = 1))
+
+plt.show()
+
+# Global Plot: Sj
+plt.figure(figsize = (20, 5))
+(train_iq
+     .ndvi_ne
+     .plot
+     .line(lw = 1))
+
+plt.show()
+
+# Per City
 plt.figure()
 ax = plt.gca()
 plt.title('Weekly dengue fever cases in San Juan and Iquitos')
@@ -64,3 +87,34 @@ plt.legend()
 plt.grid()
 plt.show()
 
+# Correlation between variables
+# San Juan (sj) - Correlation Matrix
+train_sj['total_cases'] = labels_sj['total_cases']
+
+sj_corr = train_sj.corr()
+
+sns.set(font_scale = 2)
+plt.figure(figsize=(20, 10))
+
+sns.heatmap(sj_corr)
+plt.title('Correlation Plot of all features in the San Juan Dataset')
+plt.show()
+
+# Correlation coefficients
+sns.set(font_scale = 1.5)
+(abs(sj_corr)
+ .total_cases
+ .drop('total_cases')
+ .sort_values()
+ .plot
+ .barh())
+
+# Filling Nan Values using the most recent observation
+
+train_sj.sort_index(inplace = True)
+train_sj.fillna(method = 'ffill', inplace = True)
+test_sj.fillna(method = 'ffill', inplace = True)
+
+train_iq.sort_index(inplace = True)
+train_iq.fillna(method = 'ffill', inplace = True)
+test_iq.fillna(method = 'ffill', inplace = True)
